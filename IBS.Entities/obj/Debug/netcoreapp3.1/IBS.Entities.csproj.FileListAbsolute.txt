@@ -1,0 +1,9 @@
+I:\IBS\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.deps.json
+I:\IBS\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.dll
+I:\IBS\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.pdb
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.AssemblyInfoInputs.cache
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.AssemblyInfo.cs
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csproj.CoreCompileInputs.cache
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.dll
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.pdb
+I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csprojAssemblyReference.cache

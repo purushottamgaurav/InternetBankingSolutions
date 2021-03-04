@@ -1,0 +1,15 @@
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.deps.json
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.pdb
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csprojAssemblyReference.cache
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.AssemblyInfoInputs.cache
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.AssemblyInfo.cs
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csproj.CoreCompileInputs.cache
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.pdb
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll.config
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.Entities.dll
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.Exceptions.dll
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.Entities.pdb
+I:\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.Exceptions.pdb
+I:\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csproj.CopyComplete

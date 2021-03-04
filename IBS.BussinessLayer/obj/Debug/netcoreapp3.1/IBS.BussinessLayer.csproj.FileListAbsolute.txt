@@ -1,0 +1,17 @@
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.csprojAssemblyReference.cache
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.AssemblyInfoInputs.cache
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.AssemblyInfo.cs
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.csproj.CoreCompileInputs.cache
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.BussinessLayer.deps.json
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.BussinessLayer.dll
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.BussinessLayer.pdb
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.Entities.dll
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.Exceptions.dll
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.pdb
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll.config
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.Entities.pdb
+I:\IBS\IBS.BussinessLayer\bin\Debug\netcoreapp3.1\IBS.Exceptions.pdb
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.csproj.CopyComplete
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.dll
+I:\IBS\IBS.BussinessLayer\obj\Debug\netcoreapp3.1\IBS.BussinessLayer.pdb
