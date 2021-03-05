@@ -14,7 +14,7 @@ namespace IBS.DataAccessLayer
         public string d_deposit(double damount, string accountno)
         {
             string bal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("DepositMoney", c);
@@ -32,7 +32,7 @@ namespace IBS.DataAccessLayer
         public string d_withdraw(double wamount, string accountno)
         {
             string bal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("WithdrawMoney", c);
@@ -50,7 +50,7 @@ namespace IBS.DataAccessLayer
         public string d_transfer(double tamount, string toaccount, string accountno)
         {
             string bal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("TransferMoney", c);
@@ -68,7 +68,7 @@ namespace IBS.DataAccessLayer
         }
         public void d_updatePassword(string newpassword, string accountno)
         {
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -83,7 +83,7 @@ namespace IBS.DataAccessLayer
         public double d_availablebalance(string accountno)
         {
             double availbal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();
@@ -100,7 +100,7 @@ namespace IBS.DataAccessLayer
         public bool d_accountexists(string accountno)
         {
             bool flag;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();

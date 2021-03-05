@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using IBS.Entities;
 using IBS.Exceptions;
+using System.Collections;
 
 namespace IBS.DataAccessLayer
 {
@@ -18,7 +19,7 @@ namespace IBS.DataAccessLayer
 
             //inserting data in User table with status = applied
             string uid;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("AddUser", c);
@@ -45,7 +46,7 @@ namespace IBS.DataAccessLayer
             //inserting data in Nominees table
             foreach (Nominee n in nomineelist)
             {
-                using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+                using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
                 {
                     c.Open();
                     SqlCommand cmd2 = new SqlCommand();
@@ -67,15 +68,14 @@ namespace IBS.DataAccessLayer
             //inserting data in Accounts Table
             //generating Accno and passwrd
             string accno = "IBS0000" + uid;
-            string pass = "IBS" + registeruser.UserName.Substring(0, 3).ToUpper() + "@X" + uid;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+           // string pass = "IBS" + registeruser.UserName.Substring(0, 3).ToUpper() + "@X" + uid;
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd3 = new SqlCommand();
                 cmd3.Connection = c;
-                cmd3.CommandText = "insert into Accounts(AccountNumber,Password,AccountType,AccountCreationTime,UserID) values(@accno,@apass,@atype,GETDATE(),@auid)";
+                cmd3.CommandText = "insert into Accounts(AccountNumber,AccountType,AccountCreationTime,UserID) values(@accno,@atype,GETDATE(),@auid)";
                 cmd3.Parameters.AddWithValue("@accno", accno);
-                cmd3.Parameters.AddWithValue("@apass", pass);
                 cmd3.Parameters.AddWithValue("@atype", atype);
                 cmd3.Parameters.AddWithValue("@auid", uid);
                 cmd3.ExecuteNonQuery();
@@ -84,15 +84,62 @@ namespace IBS.DataAccessLayer
             return uid;
 
         }
+
+        public string d_adminRegistration(Admins registeradmin)
+        {
+            string uid;
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("AddAdmin", c);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@uname", registeradmin.AdminName);
+                cmd.Parameters.AddWithValue("@mob", registeradmin.MobileNumber);
+                cmd.Parameters.AddWithValue("@email", registeradmin.EmailAddress);
+                cmd.Parameters.Add("@uid", SqlDbType.Int);
+                cmd.Parameters["@uid"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                uid = Convert.ToString(cmd.Parameters["@uid"].Value);
+                c.Close();
+            }
+            string auserid = "ADMIN0000" + uid;
+            string pass = "AIBS" + registeradmin.AdminName.Substring(0, 3).ToUpper() + "@X" + uid;
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd3 = new SqlCommand();
+                cmd3.Connection = c;
+                cmd3.CommandText = "update Admins set AdminUserID = @auserid where AdminID = @uid";
+                cmd3.Parameters.AddWithValue("@uid", uid);
+                cmd3.Parameters.AddWithValue("@auserid", auserid);
+                cmd3.ExecuteNonQuery();
+                c.Close();
+            }
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd3 = new SqlCommand();
+                cmd3.Connection = c;
+                cmd3.CommandText = "insert into Credentials   values(@auserid,@pass,'admin')";
+                cmd3.Parameters.AddWithValue("@auserid", auserid);
+                cmd3.Parameters.AddWithValue("@pass", pass);
+                cmd3.ExecuteNonQuery();
+                c.Close();
+            }
+
+            return "UserID : "+auserid + "\n Password : " + pass;
+        }
+
+
         public string d_checkStatus(string uid)
         {
             string currstatus;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();
                 cmd1.Connection = c;
-                cmd1.CommandText = "select Status from Users where UserId = @suid";
+                cmd1.CommandText = "select Status from Customers where UserId = @suid";
                 cmd1.Parameters.AddWithValue("@suid", uid);
                 SqlDataReader rd = cmd1.ExecuteReader();
                 bool flag = rd.HasRows;
@@ -108,22 +155,25 @@ namespace IBS.DataAccessLayer
                         c.Open();
                         SqlCommand cmd3 = new SqlCommand();
                         cmd3.Connection = c;
-                        cmd3.CommandText = "update Users set Status='created' where USERID=@uuid";
+                        cmd3.CommandText = "update Customers set Status='created' where USERID=@uuid";
                         cmd3.Parameters.AddWithValue("@uuid", uid);
                         cmd3.ExecuteNonQuery();
                         c.Close();
+                        
 
                     }
-                   
+
+                    return currstatus; 
+
+
                 }
                 else
                 {
                     c.Close();
-                    throw new NoAccountException("\nUser Id Does not Exist\nPlease Register to Create Bank Account");                    
+                    throw new NoAccountException("\nUser Id Does not Exist\nPlease Register to Create Bank Account");                   
                 }
             }
 
-            return currstatus;
 
 
         }
@@ -131,12 +181,12 @@ namespace IBS.DataAccessLayer
         public List<User> d_newRegistrations()
         {
             List<User> userlist = new List<User>();
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();
                 cmd1.Connection = c;
-                cmd1.CommandText = "select * from Users where status = 'applied'";
+                cmd1.CommandText = "select * from Customers where status = 'applied'";
                 SqlDataReader rd = cmd1.ExecuteReader();
                 bool flag = rd.HasRows;
 
@@ -173,7 +223,7 @@ namespace IBS.DataAccessLayer
         {
             List<Nominee> nomineelist = new List<Nominee>();
 
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd2 = new SqlCommand();
@@ -196,28 +246,42 @@ namespace IBS.DataAccessLayer
             }
             return nomineelist;
         }
-        public void d_approveAccount(string acceptuid)
+        public void  d_approveAccount(string acceptuid)
         {
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = c;
-                cmd.CommandText = "update Users set Status='approved' where USERID=@uuid";
+                cmd.CommandText = "update Customers set Status='approved' where USERID=@uuid";
                 cmd.Parameters.AddWithValue("@uuid", acceptuid);
                 cmd.ExecuteNonQuery();
                 c.Close();
             }
-           
-        }
-        public void d_rejectAccount(string rejectuid)
-        {
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            string accountno = "IBS0000" + acceptuid;
+            string pass = "IBSPASS"+ "@X" + acceptuid;
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = c;
-                cmd.CommandText = "delete from Users where USERID=@uuid and status = 'applied'";
+                cmd.CommandText = "insert into Credentials values(@userid,@pass,'customer')";
+                cmd.Parameters.AddWithValue("@userid", accountno);
+                cmd.Parameters.AddWithValue("@pass", pass);
+                cmd.ExecuteNonQuery();
+                c.Close();
+            }
+            //string cred = "Account NO:"+ Account no
+            //return ;
+        }
+        public void d_rejectAccount(string rejectuid)
+        {
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = c;
+                cmd.CommandText = "delete from Customers where USERID=@uuid and status = 'applied'";
                 cmd.Parameters.AddWithValue("@uuid", rejectuid);
                 cmd.ExecuteNonQuery();
                 c.Close();
@@ -226,20 +290,57 @@ namespace IBS.DataAccessLayer
         }
         public void d_approveAll()
         {
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            ArrayList a = new ArrayList();
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd2 = new SqlCommand();
+                cmd2.Connection = c;
+                cmd2.CommandText = "select UserID from Customers where Status ='applied'";
+                SqlDataReader rd2 = cmd2.ExecuteReader();
+                if (rd2.HasRows)
+                {
+                    while (rd2.Read())
+                    {
+                        a.Add(rd2.GetInt32(0));
+                    }               
+                    c.Close();
+                }
+                else
+                {
+                    c.Close();
+                }
+            }
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = c;
-                cmd.CommandText = "update Users set Status='approved' where Status='applied'";
+                cmd.CommandText = "Update Customers set Status='approved' where Status='applied'";
                 cmd.ExecuteNonQuery();
                 c.Close();
+            }
+            foreach(int  i in a)
+            {
+                string accountno = "IBS0000" + i;
+                string pass = "IBSPASS" + "@X" + i;
+                using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+                {
+                    c.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = c;
+                    cmd.CommandText = "insert into Credentials values(@userid,@pass,'customer')";
+                    cmd.Parameters.AddWithValue("@userid", accountno);
+                    cmd.Parameters.AddWithValue("@pass", pass);
+                    cmd.ExecuteNonQuery();
+                    c.Close();
+                }
             }
 
         }
         public void d_rejectAll()
         {
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -254,12 +355,12 @@ namespace IBS.DataAccessLayer
         {
             bool flag;
             //check if account number and passwrd exits and is correct 
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();
                 cmd1.Connection = c;
-                cmd1.CommandText = "select * from Accounts where AccountNumber = @accno and Password=@pass";
+                cmd1.CommandText = "select * from Credentials where ID = @accno and Password=@pass";
                 cmd1.Parameters.AddWithValue("@accno", accountno);
                 cmd1.Parameters.AddWithValue("@pass", password);
                 SqlDataReader rd = cmd1.ExecuteReader();
@@ -270,22 +371,21 @@ namespace IBS.DataAccessLayer
             return flag;
 
         }
-
         public string d_getaccNumberPassword(string uid)
         {
             string data;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd2 = new SqlCommand();
                 cmd2.Connection = c;
-                cmd2.CommandText = "select AccountNumber,Password from Accounts where UserId = @cuid";
+                cmd2.CommandText = "select AccountNumber from Accounts where UserId = @cuid";
                 cmd2.Parameters.AddWithValue("@cuid", uid);
                 SqlDataReader rd2 = cmd2.ExecuteReader();
                 if (rd2.HasRows)
                 {
                     rd2.Read();
-                    data = "\nYour Account Number: " + rd2.GetString(0) + "\nYour Account Password: " + rd2.GetString(1) + "\nUse the above Account number and Password to login into Your Account and make Transactions";
+                    data = "\nYour Account Number: " + rd2.GetString(0) + "\nYour Account Password: IBSPASS"+uid+"\nUse the above Account number and Password to login into Your Account and make Transactions";
                     c.Close();
                 }
                 else
@@ -295,6 +395,24 @@ namespace IBS.DataAccessLayer
 
             }
             return data;
+        }
+
+        public string d_checkRole(string userid, string pass)
+        {
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
+            {
+                c.Open();
+                SqlCommand cmd2 = new SqlCommand();
+                cmd2.Connection = c;
+                cmd2.CommandText = "select Role from Credentials where ID=@userid and Password = @pass";
+                cmd2.Parameters.AddWithValue("@userid", userid);
+                cmd2.Parameters.AddWithValue("@pass", pass);
+
+                SqlDataReader rd = cmd2.ExecuteReader();
+                rd.Read();
+                return rd.GetString(0);
+
+            }
         }
     }
 }

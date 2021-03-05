@@ -15,7 +15,7 @@ namespace IBS.DataAccessLayer
         {
             List<Transaction> transactionlist = new List<Transaction>();
 
-            using(SqlConnection con = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using(SqlConnection con = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand();
@@ -48,7 +48,7 @@ namespace IBS.DataAccessLayer
         public List<Account> d_AccountDetails()
         {
             List<Account> accountlist = new List<Account>();
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd1 = new SqlCommand();
@@ -70,7 +70,6 @@ namespace IBS.DataAccessLayer
                 }
                 c.Close();
             }
-
 
             return accountlist;
         }

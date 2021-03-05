@@ -15,8 +15,28 @@ namespace IBS.BussinessLayer
         DLInterestCalculation di = new DLInterestCalculation();
         public void b_CalculateInterest(List<Account> accountlist)
         {
-            //Calculate interest call d_CalculateInterest
-            di.d_CalculateInterest(accountlist);
+            DateTime datecheck = new DateTime(1000, 01, 01, 12, 00, 00);
+
+            DateTime last = di.d_lastInterestCalculation();
+
+            if (last == datecheck)
+            {
+                di.d_CalculateInterest(accountlist);
+            }
+            else
+            {
+                int numberofdays = (last - DateTime.Now).Days;
+
+                if (numberofdays < 30)
+                {
+                    throw new InterestException("You can Calculate the Interest after 30 days only \n Last Calculated interest on :" + last + "\n Days left : " + numberofdays);
+                }
+                else
+                {
+                    di.d_CalculateInterest(accountlist);
+                }
+            }
+
         }
 
         public double b_ViewInterest(string accountno)

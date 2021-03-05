@@ -52,11 +52,44 @@ namespace IBS.DataAccessLayer
                 }
 
             }
+
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = c;
+                cmd.CommandText = "insert into  Adminwork(AdminID,WorkTime,WorkType) values(@aid,GETDATE(),'InterestCalculation')";
+                cmd.Parameters.AddWithValue("@aid", 1); ///admin id
+                cmd.ExecuteNonQuery();
+                c.Close();
+            }
+        }
+
+        public DateTime d_lastInterestCalculation()
+        {
+            DateTime date = new DateTime(1000, 01, 01, 12, 00, 00);
+
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = c;
+                cmd.CommandText = "select WorkTime from Adminwork where workType = 'InterestCalculation'";
+                SqlDataReader rd = cmd.ExecuteReader();
+                rd.Read();
+                if (rd.HasRows)
+                {
+                    date = rd.GetDateTime(0);
+                }
+
+                c.Close();
+            }
+            return date;
         }
         public double d_ViewInterest(string accountno)
         {
             double amt;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -74,7 +107,7 @@ namespace IBS.DataAccessLayer
         public string d_WithdrawInterest(double interest, string accountno)
         {
             string bal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("WithdrawInterest", c);
@@ -90,7 +123,7 @@ namespace IBS.DataAccessLayer
         public string d_AddInterest(double interest, string accountno)
         {
             string bal;
-            using (SqlConnection c = new SqlConnection("Data Source=DESKTOPRAGINI;Initial Catalog = IBS; Integrated Security = True"))
+            using (SqlConnection c = new SqlConnection("Data Source=DESKTOP-UH8UV7B;Initial Catalog=IBS;Integrated Security=True"))
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("AddInterest", c);

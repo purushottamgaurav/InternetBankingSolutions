@@ -849,26 +849,32 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "IBS.BussinessLayer >= 1.0.0",
       "IBS.PresentationLayer >= 1.0.0",
       "System.Configuration.ConfigurationManager >= 5.0.0",
       "System.Data.SqlClient >= 4.8.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ragini\\.nuget\\packages\\": {}
+    "C:\\Users\\pgrkm\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IBS\\IBS.ServiceLayer\\IBS.ServiceLayer.csproj",
+      "projectUniqueName": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.ServiceLayer\\IBS.ServiceLayer.csproj",
       "projectName": "IBS.ServiceLayer",
-      "projectPath": "I:\\IBS\\IBS.ServiceLayer\\IBS.ServiceLayer.csproj",
-      "packagesPath": "C:\\Users\\Ragini\\.nuget\\packages\\",
-      "outputPath": "I:\\IBS\\IBS.ServiceLayer\\obj\\",
+      "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.ServiceLayer\\IBS.ServiceLayer.csproj",
+      "packagesPath": "C:\\Users\\pgrkm\\.nuget\\packages\\",
+      "outputPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.ServiceLayer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ragini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\pgrkm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -881,8 +887,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "I:\\IBS\\IBS.PresentationLayer\\IBS.PresentationLayer.csproj": {
-              "projectPath": "I:\\IBS\\IBS.PresentationLayer\\IBS.PresentationLayer.csproj"
+            "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj": {
+              "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj"
+            },
+            "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.PresentationLayer\\IBS.PresentationLayer.csproj": {
+              "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.PresentationLayer\\IBS.PresentationLayer.csproj"
             }
           }
         }

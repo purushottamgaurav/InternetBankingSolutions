@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IBS.BussinessLayer\IBS.BussinessLayer.csproj" />
     <ProjectReference Include="..\IBS.PresentationLayer\IBS.PresentationLayer.csproj" />
   </ItemGroup>
 

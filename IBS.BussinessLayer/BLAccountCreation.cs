@@ -19,17 +19,22 @@ namespace IBS.BussinessLayer
             string uid;                   
                 int age = 0;
                 age = DateTime.Now.Year - registeruser.Dob.Year;
-                if (DateTime.Now.DayOfYear < registeruser.Dob.DayOfYear) ;
-                age = age - 1;
+                if (DateTime.Now.DayOfYear < registeruser.Dob.DayOfYear) 
+                        age = age - 1;
 
                 if (age >= 0 && age < 18)
-                    throw new DataValidationException("You Are below 18 years. So Your Account Cannot be created");
+                    throw new DataValidationException("You Are below 18 years,So Your Account Cannot be created");
                 else if (age < 0 || age > 100)
                     throw new DataValidationException("You have Entered false Date of birth");
                 
                 uid = da.d_createAccount(registeruser, nomineelist, atype);           
                   
             return uid;
+        }
+
+        public string b_adminRegistration(Admins registeradmin )
+        {
+            return da.d_adminRegistration(registeradmin);
         }
         public string b_checkStatus(string tempuid)
         {
@@ -69,6 +74,11 @@ namespace IBS.BussinessLayer
         public bool b_Login(string accountno, string password)
         {
             return da.d_Login(accountno, password);
+        }
+
+        public string b_checkRole(string userid, string password)
+        {
+            return da.d_checkRole(userid, password);
         }
 
     }

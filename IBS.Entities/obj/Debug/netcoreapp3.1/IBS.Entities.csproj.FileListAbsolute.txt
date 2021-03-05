@@ -7,3 +7,12 @@ I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csproj.CoreCompileInput
 I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.dll
 I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.pdb
 I:\IBS\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csprojAssemblyReference.cache
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.deps.json
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.dll
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\bin\Debug\netcoreapp3.1\IBS.Entities.pdb
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csprojAssemblyReference.cache
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.AssemblyInfoInputs.cache
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.AssemblyInfo.cs
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.csproj.CoreCompileInputs.cache
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.dll
+D:\Codes\C#\InternetBankingSolutions\IBS.Entities\obj\Debug\netcoreapp3.1\IBS.Entities.pdb

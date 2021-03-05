@@ -20,12 +20,15 @@ namespace IBS.BussinessLayer
             if (damount < 0)
             {
                 Console.Beep();
-                 bal = "Sorry ... you have entered Invalid Amount";
+                Console.ForegroundColor = ConsoleColor.Red;
+                bal = " Sorry ... you have entered Invalid Amount";
+                
+                
             }
             else
             {
                 bal = dmt.d_withdraw(damount, accountno);
-                bal = "Amount " + damount + " deposited to Account Number : " + accountno + "\n Available Balance : " + bal;
+                bal = " Amount " + damount + " deposited to Account Number : " + accountno + "\n Available Balance : " + bal;
 
             }
             return bal;
@@ -38,12 +41,15 @@ namespace IBS.BussinessLayer
             double availbal = dmt.d_availablebalance(accountno);
             if (availbal - wamount < minbal)
             {
-                bal = "Sorry... Cannot withdraw amount as balance left after withdrawing " + wamount + " will be " + (availbal - wamount)+ "\nMinimum Amount requried for existence of account is " + minbal;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Beep();
+                bal = " Sorry... Cannot withdraw amount as balance left after withdrawing  " + wamount + " will be " + (availbal - wamount)+ "\n Minimum Amount requried for existence of account is " + minbal;
+                
             }
             else
             {
                 bal = dmt.d_withdraw(wamount, accountno);
-                bal = "Amount " + wamount + " withdrawn to Account Number : " + accountno + "\n Available Balance : " + bal;
+                bal = " Amount " + wamount + " withdrawn to Account Number : " + accountno + "\n Available Balance : " + bal;
             }
 
             return bal;
@@ -55,8 +61,10 @@ namespace IBS.BussinessLayer
             double availbal = dmt.d_availablebalance(accountno);
             if (availbal - tamount < minbal)
             {
-                bal = "Sorry... Cannot transfer amount as balance left after transferring " + tamount + " will be " + (availbal - tamount)+ "\nMinimum Amount requried for existence of account is " + minbal;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Beep();
+                bal = "" + " Sorry... Cannot transfer amount as balance left after transferring " + tamount + " will be " + (availbal - tamount)+ "\nMinimum Amount requried for existence of account is " + minbal;
+                
             }
             else
             {
@@ -64,10 +72,11 @@ namespace IBS.BussinessLayer
                 if (flag)
                 {
                     bal = dmt.d_transfer(tamount, toaccount, accountno);
-                    bal = "Amount " + tamount + " Transferred to Account Number : " + toaccount + "\n Available Balance : "+bal;
+                    bal = " Amount " + tamount + " Transferred to Account Number : " + toaccount + "\n Available Balance : "+bal;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     bal = "Sorry... You have entered an account number That Does not exist";
                     Console.Beep();
                 }

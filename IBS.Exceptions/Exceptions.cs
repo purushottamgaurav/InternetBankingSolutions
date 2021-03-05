@@ -17,4 +17,9 @@ namespace IBS.Exceptions
         public NoAccountException() : base() { }
         public NoAccountException(string message) : base(message) { }
     }
+    public class InterestException : Exception
+    {
+        public InterestException() : base() { }
+        public InterestException(string message) : base(message) { }
+    }
 }

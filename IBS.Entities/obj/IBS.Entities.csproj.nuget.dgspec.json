@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj": {}
+    "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj": {}
   },
   "projects": {
-    "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj": {
+    "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj",
+        "projectUniqueName": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj",
         "projectName": "IBS.Entities",
-        "projectPath": "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj",
-        "packagesPath": "C:\\Users\\Ragini\\.nuget\\packages\\",
-        "outputPath": "I:\\IBS\\IBS.Entities\\obj\\",
+        "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj",
+        "packagesPath": "C:\\Users\\pgrkm\\.nuget\\packages\\",
+        "outputPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Ragini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\pgrkm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

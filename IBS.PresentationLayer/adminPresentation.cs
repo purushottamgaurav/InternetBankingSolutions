@@ -5,7 +5,7 @@ using IBS.BussinessLayer;
 using IBS.Entities;
 using IBS.Exceptions;
 using System.Collections.Generic;
-
+using System.Text.RegularExpressions;
 
 namespace IBS.PresentationLayer
 {
@@ -37,6 +37,105 @@ namespace IBS.PresentationLayer
                 goto label;
             }
 
+        }
+
+        public  void adminregistration()
+        {
+        namelabel:
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("\nEnter FullName: ");
+            Console.ForegroundColor = ConsoleColor.Black;
+            string name = Console.ReadLine();
+
+            try
+            {
+                System.Text.RegularExpressions.Regex rname = new Regex("[a-zA-Z]+\\.?");
+                if (!(rname.IsMatch(name)))
+                    throw new DataEntryException("Please Enter Valid Name(Special Characters and numbers not allowed)");
+            }
+            catch (DataEntryException e)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed; ///Code lines ///Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine(e.Message);
+                goto namelabel;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.Beep();
+                goto namelabel;
+            }
+        moblabel:
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("\nMobile Number: (only 10 digits are allowed) ");
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            string mobx = Console.ReadLine();
+            try
+            {
+                Regex rmob = new Regex("^[0-9]{10}$");
+                if (!(rmob.IsMatch(mobx.ToString())))
+                    throw new DataEntryException("Please Enter Valid Mobile number(10 digit))");
+            }
+            catch (DataEntryException e)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed; ///Code lines ///
+
+                Console.WriteLine(e.Message);
+                Console.Beep();
+                Console.ForegroundColor = ConsoleColor.Black;
+                goto moblabel;
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed; ///Code lines ///
+
+                Console.WriteLine(e.Message);
+                Console.Beep();
+                Console.ForegroundColor = ConsoleColor.Black;
+                goto moblabel;
+            }
+            long mob = long.Parse(mobx);
+
+        //input email address
+        emaillabel:
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
+            Console.WriteLine("\nEmail Address: (please provide a valid email ID)");
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            string email = Console.ReadLine();
+            try
+            {
+                Regex remail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" + @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                if (!(remail.IsMatch(email)))
+                    throw new DataEntryException("Please Enter Valid email address");
+            }
+            catch (DataEntryException e)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed; ///Code lines ///
+
+                Console.WriteLine(e.Message);
+                Console.Beep();
+                Console.ForegroundColor = ConsoleColor.Black;
+                goto emaillabel;
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed; ///Code lines ///
+
+                Console.WriteLine(e.Message);
+                Console.Beep();
+                Console.ForegroundColor = ConsoleColor.Black;
+                goto emaillabel;
+            }
+
+            Admins registeradmin = new Admins(name, mob, email);
+            BLAccountCreation ba = new BLAccountCreation();
+            string res = ba.b_adminRegistration(registeradmin);
+            Console.WriteLine(res+"\n\n");
+
+            Console.ReadKey();
         }
 
         public void adminMenu()
@@ -80,12 +179,20 @@ namespace IBS.PresentationLayer
                     case 3:
                         heading("IBS Admin");
                         List<Account> accountlist = new List<Account>();
-                        accountlist = br.b_AccountDetails();
-                        display_accountdetails(accountlist);
-                        bi.b_CalculateInterest(accountlist);
-                        Console.WriteLine("\n Account details after Calculate Interest\n Interest rate is 6% for Fixed Account and 8% for Saving Account\n");
-                        accountlist = br.b_AccountDetails();
-                        display_accountdetails(accountlist);
+                        try
+                        {
+                            accountlist = br.b_AccountDetails();
+                            display_accountdetails(accountlist);
+                            bi.b_CalculateInterest(accountlist);
+                            Console.WriteLine("\n Account details after Calculate Interest\n Interest rate is 6% for Fixed Account and 8% for Saving Account\n");
+                            accountlist = br.b_AccountDetails();
+                            display_accountdetails(accountlist);
+                        }
+                        catch (InterestException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+
                         Console.ReadKey();
                         break;
 
@@ -108,13 +215,13 @@ namespace IBS.PresentationLayer
             switch (action)
             {
                 case 1:
-                    Console.WriteLine("\nEnter the user id to approve: ");
+                    Console.WriteLine("\nEnter the user id to approve account: ");
                     string acceptuid = Console.ReadLine();
                     ba.b_approveAccount(acceptuid);
                     Console.WriteLine("Accepted");
                     break;
                 case 2:
-                    Console.WriteLine("\nEnter the user id to reject: ");
+                    Console.WriteLine("\nEnter the user id to reject account: ");
                     string rejectuid = Console.ReadLine();
                     ba.b_approveAccount(rejectuid);
                     Console.WriteLine("Rejected");
@@ -122,7 +229,7 @@ namespace IBS.PresentationLayer
                     break;
                 case 3:
                     ba.b_approveAll();
-                    Console.WriteLine("Approved All");
+                    Console.WriteLine("Approve All");
                     break;
                 case 4:
                     ba.b_rejectAll();
@@ -139,7 +246,7 @@ namespace IBS.PresentationLayer
             {
                 Console.WriteLine("\n\n\n\t\t\t\t\t\t\t ADMIN\t");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.WriteLine("\n\t\t\t\t\t\tAll Transactions Till Date\n");
+                Console.WriteLine("\n\t\t\t\t\t\tAll Transaction details Till Date\n");
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("\n\t\t Transaction_ID   Transaction_From    Transaction_To    Amount     Action     AccountHolderID");

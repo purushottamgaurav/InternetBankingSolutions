@@ -751,20 +751,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ragini\\.nuget\\packages\\": {}
+    "C:\\Users\\pgrkm\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IBS\\IBS.Exceptions\\IBS.Exceptions.csproj",
+      "projectUniqueName": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Exceptions\\IBS.Exceptions.csproj",
       "projectName": "IBS.Exceptions",
-      "projectPath": "I:\\IBS\\IBS.Exceptions\\IBS.Exceptions.csproj",
-      "packagesPath": "C:\\Users\\Ragini\\.nuget\\packages\\",
-      "outputPath": "I:\\IBS\\IBS.Exceptions\\obj\\",
+      "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Exceptions\\IBS.Exceptions.csproj",
+      "packagesPath": "C:\\Users\\pgrkm\\.nuget\\packages\\",
+      "outputPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Exceptions\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ragini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\pgrkm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

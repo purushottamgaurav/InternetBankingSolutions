@@ -813,20 +813,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ragini\\.nuget\\packages\\": {}
+    "C:\\Users\\pgrkm\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IBS\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj",
+      "projectUniqueName": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj",
       "projectName": "IBS.BussinessLayer",
-      "projectPath": "I:\\IBS\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj",
-      "packagesPath": "C:\\Users\\Ragini\\.nuget\\packages\\",
-      "outputPath": "I:\\IBS\\IBS.BussinessLayer\\obj\\",
+      "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.BussinessLayer\\IBS.BussinessLayer.csproj",
+      "packagesPath": "C:\\Users\\pgrkm\\.nuget\\packages\\",
+      "outputPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.BussinessLayer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ragini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\pgrkm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -839,14 +844,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "I:\\IBS\\IBS.DataAccessLayer\\IBS.DataAccessLayer.csproj": {
-              "projectPath": "I:\\IBS\\IBS.DataAccessLayer\\IBS.DataAccessLayer.csproj"
+            "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.DataAccessLayer\\IBS.DataAccessLayer.csproj": {
+              "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.DataAccessLayer\\IBS.DataAccessLayer.csproj"
             },
-            "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj": {
-              "projectPath": "I:\\IBS\\IBS.Entities\\IBS.Entities.csproj"
+            "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj": {
+              "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Entities\\IBS.Entities.csproj"
             },
-            "I:\\IBS\\IBS.Exceptions\\IBS.Exceptions.csproj": {
-              "projectPath": "I:\\IBS\\IBS.Exceptions\\IBS.Exceptions.csproj"
+            "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Exceptions\\IBS.Exceptions.csproj": {
+              "projectPath": "D:\\Codes\\C#\\InternetBankingSolutions\\IBS.Exceptions\\IBS.Exceptions.csproj"
             }
           }
         }

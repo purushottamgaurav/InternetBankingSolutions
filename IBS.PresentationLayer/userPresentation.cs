@@ -11,136 +11,177 @@ namespace IBS.PresentationLayer
 {
     public class userPresentation
     {
-        public void userUI()
+        BLAccountCreation ba = new BLAccountCreation();
+        //public void userUI()
+        //{
+            
+        //    bool flag = true;
+        //    while (flag)
+        //    {
+        //        try
+        //        {
+        //            Console.Clear();
+        //            heading();
+
+        //            Console.WriteLine("\n\n\n\t\t\t\t\t   What do you wish to do as a User?");
+        //            Console.ForegroundColor = ConsoleColor.DarkBlue;
+        //            Console.WriteLine("\n\n\t\t\t\t\t1:Register to Open a new Account \n\t\t\t\t\t2: Use your Existing Account \n\t\t\t\t\t3: Check the status of your registration \n\t\t\t\t\t4: Exit");
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine("\n\n\n\t\t\t\t\t\tPlease Enter your Choice \n");
+        //            Console.SetCursorPosition(Console.CursorLeft + 60, Console.CursorTop);
+        //            int choice = int.Parse(Console.ReadLine());
+        //            switch (choice)
+        //            {
+        //                case 1:
+        //                    Console.Clear();
+        //                    heading();
+        //                    Console.ForegroundColor = ConsoleColor.Blue;
+        //                    Console.WriteLine("\n\n\t\t\t\t\t\t   Register Your Account");
+        //                    Console.WriteLine("\t\t\t\t\t\t   ---------------------");
+
+        //                    Console.WriteLine("\n\nPlease enter your Personal details: ");
+        //                    userRegistration();
+                           
+        //                    break;
+
+        //                case 2:
+        //                    Console.Clear();
+        //                    heading();
+
+        //                    Console.ForegroundColor = ConsoleColor.Blue;
+        //                    Console.WriteLine("\n\n\n\t\t\t\t\t\t\tUSER LOGIN");
+        //                    Console.ForegroundColor = ConsoleColor.Black;
+        //                    Console.WriteLine("\t\t\t\t\t\t\t----------");
+        //                    Console.WriteLine("\n\n\t\t\t\t\t    please enter your Account Number : ");
+        //                    Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
+        //                    string accountno = Console.ReadLine();
+        //                    Console.WriteLine("\n\t\t\t\t\t\t     Enter Password : ");
+        //                    Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
+        //                    string password = Console.ReadLine();
+        //                    // check if login credentials are valid or not
+        //                    bool ifvalid = ba.b_Login(accountno, password);
+        //                    if (ifvalid)
+        //                    {
+        //                        usermenu(accountno, password);
+        //                    }
+        //                    else
+        //                    {
+        //                        Console.WriteLine("\nIncorrect Account no or password\nLogin Failed");
+        //                        Console.WriteLine("press any key to go back");
+        //                        Console.ReadKey();
+        //                    }
+        //                    break;
+
+        //                case 3:
+        //                    //checking status of application
+        //                    Console.Clear();
+        //                    heading();
+        //                    Console.ForegroundColor = ConsoleColor.Black;
+        //                    Console.WriteLine("\n\n\n\t\t\t\t Enter User Id to Check The Status of Your Application");
+        //                    Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
+        //                    string tempuid = Console.ReadLine();
+        //                    string s = ba.b_checkStatus(tempuid);
+        //                    //display proper message
+        //                    Console.WriteLine(s);
+        //                    Console.WriteLine("\npress any key to go back");
+        //                    Console.ReadKey();
+        //                    break;
+
+        //                case 4:
+        //                    flag = false;
+        //                    break;
+
+        //                default:
+        //                    Console.WriteLine("Invalid Choice");
+        //                    Console.WriteLine("\npress any key to go back");
+        //                    Console.ReadKey();
+        //                    break;
+        //            }
+
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e.Message);
+        //            Console.WriteLine("Press any key to enter again..");
+        //            Console.ReadKey();
+        //        }
+
+        //    }
+
+        //}
+
+        public  string status(int i)
         {
             BLAccountCreation ba = new BLAccountCreation();
-            bool flag = true;
-            while (flag)
-            {
-                try
-                {
-                    Console.Clear();
-                    heading();
-
-                    Console.WriteLine("\n\n\n\t\t\t\t\t   What do you wish to do as a User?");
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("\n\n\t\t\t\t\t1: Open a new Account \n\t\t\t\t\t2: Use your Existing Account \n\t\t\t\t\t3: Check the status of registration \n\t\t\t\t\t4: Exit");
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine("\n\n\n\t\t\t\t\t\tPlease Enter your Choice \n");
-                    Console.SetCursorPosition(Console.CursorLeft + 60, Console.CursorTop);
-                    int choice = int.Parse(Console.ReadLine());
-                    switch (choice)
-                    {
-                        case 1:
-                            Console.Clear();
-                            heading();
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("\n\n\t\t\t\t\t\t   Register Your Account");
-                            Console.WriteLine("\t\t\t\t\t\t   ---------------------");
-
-                            Console.WriteLine("\n\nPlease enter your Personal details: ");
-                            userRegistration();
-                           
-                            break;
-
-                        case 2:
-                            Console.Clear();
-                            heading();
-
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("\n\n\n\t\t\t\t\t\t\tUSER LOGIN");
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.WriteLine("\t\t\t\t\t\t\t----------");
-                            Console.WriteLine("\n\n\t\t\t\t\t    please enter your Account Number : ");
-                            Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
-                            string accountno = Console.ReadLine();
-                            Console.WriteLine("\n\t\t\t\t\t\t     Enter Password : ");
-                            Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
-                            string password = Console.ReadLine();
-                            // check if login credentials are valid or not
-                            bool ifvalid = ba.b_Login(accountno, password);
-                            if (ifvalid)
-                            {
-                                usermenu(accountno, password);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\nIncorrect Account no or password\nLogin Failed");
-                                Console.WriteLine("press any key to go back");
-                                Console.ReadKey();
-                            }
-                            break;
-
-                        case 3:
-                            //checking status of application
-                            Console.Clear();
-                            heading();
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.WriteLine("\n\n\n\t\t\t\t Enter User Id to Check The Status of Your Application");
-                            Console.SetCursorPosition(Console.CursorLeft + 55, Console.CursorTop);
-                            string tempuid = Console.ReadLine();
-                            string s = ba.b_checkStatus(tempuid);
-                            //display proper message
-                            Console.WriteLine(s);
-                            Console.WriteLine("\npress any key to go back");
-                            Console.ReadKey();
-                            break;
-
-                        case 4:
-                            flag = false;
-                            break;
-
-                        default:
-                            Console.WriteLine("Invalid Choice");
-                            Console.WriteLine("\npress any key to go back");
-                            Console.ReadKey();
-                            break;
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine("Press any key to enter again..");
-                    Console.ReadKey();
-                }
-
-            }
-
+           
+            string tempuid = i.ToString();
+            string s = ba.b_checkStatus(tempuid);
+            return s;
         }
-        public static void usermenu(string accountno, string password)
+        public  void usermenu(string accountno, string password)
         {
+
+            Console.Title = "IBS USER";
+            
+            Console.BackgroundColor = ConsoleColor.Gray;
             Console.Clear();
-            Console.WriteLine("Login Successful!!!");
+           
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\t\t\t------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("\t\t\t\t\t\tInternet Banking Solutions ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\t\t\t------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            DateTime d = DateTime.Now;
+
+            Console.Write("\t\t\t" + d.ToString("d"));
+            Console.Write("\t\t\t" + d.ToString("dddd"));
+            Console.Write("\t\t\t" + d.ToString("t"));
+
+           
+            Console.WriteLine("\n\n\n\t\t\t\t\t\t  Login Successful!!!");
+            Console.WriteLine("\t\t\t\t\t\t------------------------");
             BLMoneyTransaction bmt = new BLMoneyTransaction();
             BLInterestCalculation bi = new BLInterestCalculation();
 
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("\n1. Deposit Money \n2. WithDraw Money \n3. Transfer Money \n4. Interest Amount \n5. Update Password \n6. Exit");
+                
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("\n\n\n\t\t\t\t\t\t  1. Deposit Money \n\t\t\t\t\t\t  2. WithDraw Money \n\t\t\t\t\t\t  3. Transfer Money \n\t\t\t\t\t\t  4. Interest Amount \n\t\t\t\t\t\t  5. Update Password \n\t\t\t\t\t\t  6. Exit");
+                //Console.WriteLine(" Enter Your Choice :");
                 int choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Enter Amount You Want to Deposit");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine(" Enter Amount You Want to Deposit :");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         double damount = double.Parse(Console.ReadLine());
                         string bal =  bmt.b_deposit(damount, accountno);
                         Console.WriteLine(bal);
                         break;
 
                     case 2:
-                        Console.WriteLine("Enter Amount You Want to Withdraw");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine(" Enter Amount You Want to Withdraw :");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         double wamount = double.Parse(Console.ReadLine());
                         string bal2 = bmt.b_withdraw(wamount, accountno);
                         Console.WriteLine(bal2);
                         break;
 
                     case 3:
-                        Console.WriteLine("Enter Account number to which you want to transfer money");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine(" Enter Account number to which you want to transfer money");
                         string toaccount = (Console.ReadLine());
-                        Console.WriteLine("Enter Amount You Want to Transfer");
+                        Console.WriteLine(" Enter Amount You Want to Transfer");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         double tamount = double.Parse(Console.ReadLine());
                         string bal3 = bmt.b_transfer(tamount, toaccount, accountno);
                         Console.WriteLine(bal3);
@@ -148,21 +189,23 @@ namespace IBS.PresentationLayer
 
                     case 4:
                         double interest = bi.b_ViewInterest(accountno);
-                        Console.WriteLine("\n Interest Amount " + interest);
+                        Console.WriteLine("\n  Interest Amount " + interest);
                         if (interest > 0)
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             Console.WriteLine("\n What do you want to do with the interest amount\n");
-                            Console.WriteLine(" 1. Withdraw \n 2. Add to Account Balance \n 3. Exit ");
+                            Console.WriteLine("  1. Withdraw \n  2. Add to Account Balance \n  3. Exit ");
+                            Console.ForegroundColor = ConsoleColor.Black;
                             int iaction = int.Parse(Console.ReadLine());
                             switch (iaction)
                             {
                                 case 1:
                                     string bal4= bi.b_WithdrawInterest(interest, accountno);
-                                    Console.WriteLine("Interest Amount Withdrawn \n Interest Balance: 0.00 \n Available Balance : " + bal4);
+                                    Console.WriteLine(" Interest Amount Withdrawn \n   Interest Balance: 0.00 \n Available Balance : " + bal4);
                                     break;
                                 case 2:
                                     string bal5 = bi.b_AddInterest(interest, accountno);
-                                    Console.WriteLine("Interest Amount Added to Account Balance \n Interest Balance: 0.00 \n Available Balance : " + bal5);
+                                    Console.WriteLine(" Interest Amount Added to Account Balance \n Interest Balance: 0.00 \n Available Balance : " + bal5);
                                     break;
                                 case 3:
                                     break;
@@ -173,10 +216,12 @@ namespace IBS.PresentationLayer
                         break;
 
                     case 5:
-                        Console.WriteLine("Enter New Password");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine(" Enter New Password");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         string newpassword = (Console.ReadLine());
                         bmt.b_updatePassword(newpassword, accountno);
-                        Console.WriteLine("Password Updated \n New Password : " + newpassword);
+                        Console.WriteLine(" Password Updated \n New Password : " + newpassword);
                         break;
 
                     case 6:
@@ -191,12 +236,12 @@ namespace IBS.PresentationLayer
 
         }
 
-        public static User userinput()
+        public  User userinput()
         {
         //input user name
         namelabel:
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\nName: ");
+            Console.WriteLine("\nEnter FullName: ");
             Console.ForegroundColor = ConsoleColor.Black;
             string name = Console.ReadLine();
 
@@ -222,7 +267,7 @@ namespace IBS.PresentationLayer
             //input user address
             Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("\nAddress: ");
+            Console.WriteLine("\nAddress: (Address should include house no,name,street no,area)");
             Console.ForegroundColor = ConsoleColor.Black;
 
             string add = Console.ReadLine();
@@ -230,7 +275,7 @@ namespace IBS.PresentationLayer
         //input pin
         pinlabel:
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\nPincode: ");
+            Console.WriteLine("\nPincode: (only 6 digits are allowed)");
             Console.ForegroundColor = ConsoleColor.Black;
 
             string pinx = (Console.ReadLine());
@@ -239,7 +284,7 @@ namespace IBS.PresentationLayer
                 Regex rpin = new Regex("^[1-9]{1}[0-9]{5}$");
                 if (!(rpin.IsMatch(pinx.ToString())))
 
-                    throw new DataEntryException("Please Enter Valid Pin(Alphabets,Characters and Space are not allowed and length of pin should be 6)");
+                    throw new DataEntryException("Please Enter Valid Pincode(Alphabets,Characters and Space are not allowed and length of pin should be 6)");
 
             }
             catch (DataEntryException e)
@@ -267,7 +312,7 @@ namespace IBS.PresentationLayer
         //input date of birth
         doblabel:
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\nDate of Birth(DD-MM-YYYY): ");
+            Console.WriteLine("\nDate of Birth(DD-MM-YYYY):   (Please provide valid DOB in the same format) ");
             Console.ForegroundColor = ConsoleColor.Black;
 
             string dobx = Console.ReadLine();
@@ -396,7 +441,7 @@ namespace IBS.PresentationLayer
         //input mobile number
         moblabel:
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\nMobile Number: ");
+            Console.WriteLine("\nMobile Number: (only 10 digits are allowed) ");
             Console.ForegroundColor = ConsoleColor.Black;
 
             string mobx = Console.ReadLine();
@@ -430,7 +475,7 @@ namespace IBS.PresentationLayer
         emaillabel:
             Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("\nEmail Address: ");
+            Console.WriteLine("\nEmail Address: (please provide a valid email ID)");
             Console.ForegroundColor = ConsoleColor.Black;
 
             string email = Console.ReadLine();
@@ -463,7 +508,7 @@ namespace IBS.PresentationLayer
 
             return registeruser;
         }
-        public static List<Nominee> nomineeinput()
+        public  List<Nominee> nomineeinput()
         {
             List<Nominee> nomineelist = new List<Nominee>();
             Console.WriteLine("\nDo You want to add Nominee(Y/N)");
@@ -628,7 +673,7 @@ namespace IBS.PresentationLayer
             moblabel:
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-                Console.WriteLine("\nMobile Number: ");
+                Console.WriteLine("\nMobile Number: (only 10 digits are allowed) ");
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 string nmobx = Console.ReadLine();
@@ -661,7 +706,7 @@ namespace IBS.PresentationLayer
                 //input address
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-                Console.WriteLine("\nAddress: ");
+                Console.WriteLine("\nAddress:  (address should include house no,name,street no,area)");
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 string nadd = Console.ReadLine();
@@ -674,7 +719,7 @@ namespace IBS.PresentationLayer
 
             return nomineelist;
         }
-        public static string atypeinput()
+        public  string atypeinput()
         {
             Console.ForegroundColor = ConsoleColor.DarkBlue;
 
@@ -702,7 +747,7 @@ namespace IBS.PresentationLayer
             return atype;
         }
 
-        public static void heading()
+        public  void heading()
         {
             Console.Title = "IBS USer";
             Console.BackgroundColor = ConsoleColor.Gray;
@@ -723,7 +768,7 @@ namespace IBS.PresentationLayer
             Console.Write("\t\t\t" + d.ToString("t"));
         }
 
-        public static void userRegistration()
+        public  void userRegistration()
         {
             BLAccountCreation ba = new BLAccountCreation();
             //taking input of user's personal details 
@@ -751,6 +796,7 @@ namespace IBS.PresentationLayer
                     Console.WriteLine("\nCongratulations ! Your Application Has been Approved !!!");
                     string data = ba.b_getaccNumberPassword(uid);
                     Console.WriteLine(data);
+
                 }
                 else if (currstatus == "rejected")
                 {
@@ -769,7 +815,7 @@ namespace IBS.PresentationLayer
                 }
                 else if (currstatus == "created")
                 {
-                    Console.WriteLine("\nYour Account is Exists");
+                    Console.WriteLine("\nYour Account Exists");
                     Console.WriteLine("\nUse the Account number and Password provided to login into Your Account and make Transactions");
                 }
                 Console.WriteLine("\npress any key to go back");
